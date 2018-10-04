@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Table } from 'reactstrap';
-import ReposListHeader from './repos-list-header/repos-list-header';
-import Repos from './repos/repos';
+import RepositoryListHeader from './repository-list-header/repository-list-header';
+import RepositoryDetails from './repository-details/repository-details';
 
 // component representing repository list table
-class ReposList extends Component {
+class RepositoryList extends Component {
 
     state = {
         // holds all the repositories
         repos: [],
         // holds column headers
-        headers: ['Sr.no', 'Repo name', 'Created at', 'Last updated at', 'Repo url', 'Owner']
+        headers: ['Id', 'Repo name', 'Languages', 'Subscribers', 'Contributers', 'Repo url', 'Owner']
     }
 
     constructor() {
@@ -20,6 +20,7 @@ class ReposList extends Component {
         axios.get(`https://api.github.com/users/rashmivishwakarma/repos`)
             .then(res => {
                 const repos = res.data;
+                console.log(repos);
                 this.setState({ repos });
             });
     }
@@ -29,14 +30,14 @@ class ReposList extends Component {
         <Table hover bordered responsive>
             <thead>
                 {/* column headers */}
-                <ReposListHeader headers={this.state.headers} />
+                <RepositoryListHeader headers={this.state.headers} />
             </thead>
             <tbody>
                 {/* repositories */}
-                {this.state.repos.map((repo, index) => <Repos key={repo.id} index={index + 1} {...repo} />)}
+                {this.state.repos.map((repo, index) => <RepositoryDetails key={repo.id} index={index + 1} {...repo} />)}
             </tbody>
         </Table>
     );
 
 }
-export default ReposList;
+export default RepositoryList;

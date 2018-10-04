@@ -1,16 +1,17 @@
 import React from 'react';
 import { Navbar, NavbarBrand, Row, Col } from 'reactstrap';
 
-const NavigationBar = () => (
+// header component
+const Header = (props) => (
     <Navbar color="dark" dark>
         <NavbarBrand href="/">
             <Row>
                 {/* github icon */}
                 <Col><i className="fa fa-github fa-2x"></i></Col>
                 {/* title */}
-                <Col>Github repositories</Col>
+                <Col>{props.title}</Col>
             </Row>
         </NavbarBrand>
     </Navbar>
 )
-export default NavigationBar;
+export default Header;
