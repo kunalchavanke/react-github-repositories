@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Moment from 'moment';
 import { Tooltip } from 'reactstrap';
-import Owner from './owner';
+import RepositoryOwner from './repository-owner';
 import './repository-details.css';
 
 // component representing repos i.e. table row
@@ -40,7 +40,7 @@ class RepositoryDetails extends Component {
                     {this.props.html_url}
                 </Tooltip>
                 {/* repo owner */}
-                <td><Owner id={this.props.id} owner={this.props.owner}/></td>
+                <td><RepositoryOwner id={this.props.id} owner={this.props.owner}/></td>
             </tr>
         );
     }

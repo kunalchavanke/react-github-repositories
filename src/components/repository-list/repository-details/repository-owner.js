@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Tooltip, Button, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 
 // component representing owner of repos
-class Owner extends Component {
+class RepositoryOwner extends Component {
 
     constructor(props) {
         super(props);
@@ -49,4 +49,4 @@ class Owner extends Component {
         );
     }
 }
-export default Owner;
+export default RepositoryOwner;
