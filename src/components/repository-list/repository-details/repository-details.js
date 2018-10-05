@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import Moment from 'moment';
+import { Link } from 'react-router-dom';
 import { Tooltip } from 'reactstrap';
 import RepositoryOwner from './repository-owner';
 import './repository-details.css';
@@ -28,7 +29,7 @@ class RepositoryDetails extends Component {
                 {/* repo last updated on */}
                 {/* <td>{Moment(this.props.updated_at).format('llll')}</td> */}
                 {/* repo languages */}
-                <td><a href={this.props.languages_url} target="/">Languages</a></td>
+                <td><Link to="/languages">Languages</Link></td>
                 {/* repo subscribers */}
                 <td><a href={this.props.subscribers_url} target="/">Subscribers</a></td>
                 {/* repo contributers */}
@@ -40,7 +41,7 @@ class RepositoryDetails extends Component {
                     {this.props.html_url}
                 </Tooltip>
                 {/* repo owner */}
-                <td><RepositoryOwner id={this.props.id} owner={this.props.owner}/></td>
+                <td><RepositoryOwner id={this.props.id} owner={this.props.owner} /></td>
             </tr>
         );
     }

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import './App.css';
 import Header from './header/header';
 import RepositoryList from './repository-list/repository-list';
+import Languages from './languages/languages';
 
 class App extends Component {
   render() {
@@ -16,7 +17,10 @@ class App extends Component {
         <Row>
           <Col>
             <BrowserRouter>
-              <Route path="/" component={ RepositoryList } />
+              <Switch>
+                <Route exact path="/" component={RepositoryList} />
+                <Route path="/languages" component={Languages} />
+              </Switch>
             </BrowserRouter>
           </Col>
         </Row>
