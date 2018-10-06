@@ -7,15 +7,11 @@ class Languages extends Component {
         super();
         this.state = { languages: {} }
     }
-
+    
     componentDidMount() {
-        // get languages url for selected repository
-        this.languagesUrl = this.props.repos.find(repo => repo.id == this.props.match.params.id).languages_url;
         // get languages
-        axios.get(this.languagesUrl)
-            .then(res => {
-                this.setState({ languages: res.data });
-            });
+        axios.get(this.props.languagesUrl)
+            .then(res => { this.setState({ languages: res.data }) });
     }
 
     render = () => (

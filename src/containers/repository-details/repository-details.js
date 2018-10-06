@@ -29,11 +29,11 @@ class RepositoryDetails extends Component {
                 {/* repo last updated on */}
                 {/* <td>{Moment(this.props.updated_at).format('llll')}</td> */}
                 {/* repo languages */}
-                <td><Link to={"/languages/" + this.props.id}>Languages</Link></td>
+                <td><Link to={"/languages/" + this.props.id} onClick={() => this.props.onClickUrl(this.props.languages_url, 'Languages')}>Languages</Link></td>
                 {/* repo subscribers */}
-                <td><Link to={"/subscribers/" + this.props.id}>Subscribers</Link></td>
+                <td><Link to={"/subscribers/" + this.props.id} onClick={() => this.props.onClickUrl(this.props.subscribers_url, 'Subscribers')}>Subscribers</Link></td>
                 {/* repo contributers */}
-                <td><a href={this.props.contributors_url} target="/">Contributors</a></td>
+                <td><Link to={"/contributors/" + this.props.id} onClick={() => this.props.onClickUrl(this.props.contributors_url, 'Contributers')}>Contributers</Link></td>
                 {/* repo url */}
                 <td><a href={this.props.html_url} id={'Tooltip-' + this.props.id} target="/">Go to repo</a></td>
                 {/* tooltip for repo url */}

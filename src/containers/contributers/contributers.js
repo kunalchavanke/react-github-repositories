@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Subscribers extends Component {
+class Contributers extends Component {
 
     constructor() {
         super();
-        this.state = { subscribers: [] }
+        this.state = { contributers: [] }
     }
     
     componentDidMount() {
-        // get subscribers
-        axios.get(this.props.subscribersUrl)
+        // get contributers
+        console.log(this.props.contributorsUrl);
+        axios.get(this.props.contributersUrl)
             .then(res => {
-                this.setState({ subscribers: res.data })
+                this.setState({ contributers: res.data })
              });
     }
 
@@ -28,4 +29,4 @@ class Subscribers extends Component {
         </div>
     );
 }
-export default Subscribers;
+export default Contributers;
