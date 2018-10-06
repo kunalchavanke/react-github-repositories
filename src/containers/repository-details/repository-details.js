@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import Moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'reactstrap';
-import RepositoryOwner from './repository-owner';
+import RepositoryOwner from '../repository-owner/repository-owner';
 import './repository-details.css';
 
 // component representing repos i.e. table row
@@ -29,9 +29,9 @@ class RepositoryDetails extends Component {
                 {/* repo last updated on */}
                 {/* <td>{Moment(this.props.updated_at).format('llll')}</td> */}
                 {/* repo languages */}
-                <td><Link to="/languages">Languages</Link></td>
+                <td><Link to={"/languages/" + this.props.id}>Languages</Link></td>
                 {/* repo subscribers */}
-                <td><a href={this.props.subscribers_url} target="/">Subscribers</a></td>
+                <td><Link to={"/subscribers/" + this.props.id}>Subscribers</Link></td>
                 {/* repo contributers */}
                 <td><a href={this.props.contributors_url} target="/">Contributors</a></td>
                 {/* repo url */}
