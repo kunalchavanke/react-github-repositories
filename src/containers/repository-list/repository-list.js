@@ -46,8 +46,10 @@ class RepositoryList extends Component {
                             <tbody>
                                 {/* repositories */}
                                 {
-                                    this.props.filteredRepos.map((repo, index) =>
-                                        <RepositoryDetails key={repo.id} index={index + 1} {...repo} onClickUrl={this.onClickUrl} />)
+                                    (this.props.filteredRepos && this.props.filteredRepos.length > 0)
+                                        ? this.props.filteredRepos.map((repo, index) =>
+                                            <RepositoryDetails key={repo.id} index={index + 1} {...repo} onClickUrl={this.onClickUrl} />)
+                                        : <tr><td colSpan="7"><h6>{this.props.filterResultMessage}</h6></td></tr>
                                 }
                             </tbody>
                         </Table>
@@ -64,6 +66,7 @@ class RepositoryList extends Component {
 const mapStateToProps = (state) => ({
     repos: state.reposReducer.repos,
     filteredRepos: state.reposReducer.filteredRepos,
+    filterResultMessage: state.reposReducer.filterResultMessage,
     headers: state.reposReducer.headers,
     searchString: state.reposReducer.searchString
 });

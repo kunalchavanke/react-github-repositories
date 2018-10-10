@@ -36,7 +36,7 @@ class App extends Component {
               <Col>
                 <Switch>
                   <Route exact path="/" component={() => <RepositoryList onClickUrl={this.setUrlAndTitle} />} />
-                  <Route path="/languages/:id" component={() => <Languages languagesUrl={this.props.url} />} />
+                  <Route path="/languages/:id" component={() => <Languages />} />
                   <Route path="/subscribers/:id" component={() => <Subscribers subscribersUrl={this.props.url} />} />
                   <Route path="/contributors/:id" component={() => <Contributers contributorsUrl={this.props.url} />} />
                 </Switch>

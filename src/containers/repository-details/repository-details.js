@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 // import Moment from 'moment';
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'reactstrap';
+import { connect } from 'react-redux';
 import RepositoryOwner from '../repository-owner/repository-owner';
+import { setNavUrlAction } from '../../actions/app-actions';
 import './repository-details.css';
 
 // component representing repos i.e. table row
@@ -29,7 +31,7 @@ class RepositoryDetails extends Component {
                 {/* repo last updated on */}
                 {/* <td>{Moment(this.props.updated_at).format('llll')}</td> */}
                 {/* repo languages */}
-                <td><Link to={"/languages/" + this.props.id} onClick={() => this.props.onClickUrl(this.props.languages_url, 'Languages')}>Languages</Link></td>
+                <td><Link to={"/languages/" + this.props.id} onClick={() => this.props.setNavUrlAction(this.props.languages_url)}>Languages</Link></td>
                 {/* repo subscribers */}
                 <td><Link to={"/subscribers/" + this.props.id} onClick={() => this.props.onClickUrl(this.props.subscribers_url, 'Subscribers')}>Subscribers</Link></td>
                 {/* repo contributers */}
@@ -46,4 +48,14 @@ class RepositoryDetails extends Component {
         );
     }
 }
-export default RepositoryDetails;
+const mapStateToProps = (state) => ({
+    url: state.appReducer.url
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    setNavUrlAction: (url) => {
+        dispatch(setNavUrlAction(url));
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RepositoryDetails);
