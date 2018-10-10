@@ -17,7 +17,7 @@ class App extends Component {
     this.setUrlAndTitle = this.setUrlAndTitle.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     window.onpopstate = () => this.props.setTitleAction('Dashboard');
   }
 
@@ -30,26 +30,24 @@ class App extends Component {
   render() {
     return (
       <Container className="App">
-        <BrowserRouter>
-          <div>
-            <Row>
-              <Col><Header title={this.props.title} /></Col>
-            </Row>
-            <br />
-            <Row>
-              <Col>
-                <Switch>
-                  <Route exact path="/" component={() => <RepositoryList onClickUrl={this.setUrlAndTitle} />} />
-                  {/* using redux action to set fetch url */}
-                  <Route path="/languages/:id" component={() => <Languages />} />
-                  {/* using react concepts to set url */}
-                  <Route path="/subscribers/:id" component={() => <Subscribers subscribersUrl={this.props.url} />} />
-                  <Route path="/contributors/:id" component={Contributers} />
-                </Switch>
-              </Col>
-            </Row>
-          </div>
-        </BrowserRouter>
+        <Row>
+          <Col><Header title={this.props.title} /></Col>
+        </Row>
+        <br />
+        <Row>
+          <Col>
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/" component={() => <RepositoryList onClickUrl={this.setUrlAndTitle} />} />
+                {/* using redux action to set fetch url */}
+                <Route path="/languages/:id" component={() => <Languages />} />
+                {/* using react concepts to set url */}
+                <Route path="/subscribers/:id" component={() => <Subscribers subscribersUrl={this.props.url} />} />
+                <Route path="/contributors/:id" component={Contributers} />
+              </Switch>
+            </BrowserRouter>
+          </Col>
+        </Row>
       </Container>
     );
   }
