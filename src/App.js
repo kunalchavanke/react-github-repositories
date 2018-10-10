@@ -17,6 +17,10 @@ class App extends Component {
     this.setUrlAndTitle = this.setUrlAndTitle.bind(this);
   }
 
+  componentDidMount(){
+    window.onpopstate = () => this.props.setTitleAction('Dashboard');
+  }
+
   // called on click of the repository url
   setUrlAndTitle = (url, title) => {
     this.props.setTitleAction(title);
@@ -36,9 +40,11 @@ class App extends Component {
               <Col>
                 <Switch>
                   <Route exact path="/" component={() => <RepositoryList onClickUrl={this.setUrlAndTitle} />} />
+                  {/* using redux action to set fetch url */}
                   <Route path="/languages/:id" component={() => <Languages />} />
+                  {/* using react concepts to set url */}
                   <Route path="/subscribers/:id" component={() => <Subscribers subscribersUrl={this.props.url} />} />
-                  <Route path="/contributors/:id" component={() => <Contributers contributorsUrl={this.props.url} />} />
+                  <Route path="/contributors/:id" component={Contributers} />
                 </Switch>
               </Col>
             </Row>

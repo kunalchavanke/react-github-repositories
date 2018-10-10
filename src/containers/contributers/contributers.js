@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Contributers extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = { contributers: [] }
     }
 
     componentDidMount() {
+        // get contributers url
+        let repo = this.props.repos.find(repo => repo.id === +this.props.match.params.id);
         // get contributers
-        console.log(this.props.contributorsUrl);
-        axios.get(this.props.contributorsUrl)
+        axios.get(repo.contributors_url)
             .then(res => {
-                console.log(res.data);
                 this.setState({ contributers: res.data })
             });
     }
@@ -34,4 +35,13 @@ class Contributers extends Component {
         </div>
     );
 }
-export default Contributers;
+const mapStateToProps = (state) => ({
+    repos: state.reposReducer.repos
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    // setTitleAction: (title) => {
+    //     dispatch(setTitleAction(title));
+    // }
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Contributers);
