@@ -40,9 +40,10 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={() => <RepositoryList onClickUrl={this.setUrlAndTitle} />} />
                 {/* using redux action to set fetch url */}
-                <Route path="/languages/:id" component={() => <Languages />} />
+                <Route path="/languages/:id" component={Languages} />
                 {/* using react concepts to set url */}
                 <Route path="/subscribers/:id" component={() => <Subscribers subscribersUrl={this.props.url} />} />
+                {/* using route paramater to find url */}
                 <Route path="/contributors/:id" component={Contributers} />
               </Switch>
             </BrowserRouter>
