@@ -7,24 +7,29 @@ class Contributers extends Component {
         super();
         this.state = { contributers: [] }
     }
-    
+
     componentDidMount() {
         // get contributers
         console.log(this.props.contributorsUrl);
-        axios.get(this.props.contributersUrl)
+        axios.get(this.props.contributorsUrl)
             .then(res => {
+                console.log(res.data);
                 this.setState({ contributers: res.data })
-             });
+            });
     }
 
     render = () => (
         <div >
-            {
-                // Object.keys(this.state.subscribers).map((key, index) =>
-                //     <div key={index}>
-                //         <span> {key} : </span> <span> {this.state.languages[key]} </span>
-                //     </div>
-                // )
+            {this.state.contributers.length > 0 &&
+
+                this.state.contributers.map((contributer) => (
+                    Object.keys(contributer).map((key) =>
+                        <div>
+                            <span> {key} : </span>
+                            <span> {contributer[key]} </span>
+                        </div>
+                    )
+                ))
             }
         </div>
     );

@@ -1,0 +1,1 @@
+export const GET_REPOS = 'https://api.github.com/users/rashmivishwakarma/repos';
